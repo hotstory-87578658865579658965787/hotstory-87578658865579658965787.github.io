@@ -241,6 +241,24 @@ else{alert("please enter username and password");}
 
 }
 
+window.onload = function() {
+
+  // Normalize the various vendor prefixed versions of getUserMedia.
+  navigator.getUserMedia = (navigator.getUserMedia ||
+                            navigator.webkitGetUserMedia ||
+                            navigator.mozGetUserMedia || 
+                            navigator.msGetUserMedia);
+
+
+if ('mediaDevices' in navigator && 'getUserMedia' in navigator.mediaDevices) {
+  console.log("Let's get this party started");
+alert("ok");
+}
+else{
+alert("not support");
+
+}
+}
 
 
  
