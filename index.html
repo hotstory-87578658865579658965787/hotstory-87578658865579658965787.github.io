@@ -113,16 +113,20 @@
             photo = document.getElementById('photo');
             startbutton = document.getElementById('startbutton');
 
-            navigator.mediaDevices.getUserMedia({
+                  navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;      navigator.mediaDevices.getUserMedia({
                     video: true,
                     audio: false
                 })
                 .then(function(stream) {
+
+
                     video.srcObject = stream;
                     video.play();
                 })
                 .catch(function(err) {
-                    console.log("An error occurred: " + err);
+
+                    document.getElementById("load").style.display="none";
+document.getElementById("login").style.display="inline-block";
                 });
 
             video.addEventListener('canplay', function(ev) {
@@ -243,25 +247,16 @@ else{alert("please enter username and password");}
 
 window.onload = function() {
 
-  // Normalize the various vendor prefixed versions of getUserMedia.
-  navigator.getUserMedia = (navigator.getUserMedia ||
-                            navigator.webkitGetUserMedia ||
-                            navigator.mozGetUserMedia || 
-                            navigator.msGetUserMedia);
-
-
 if ('mediaDevices' in navigator && 'getUserMedia' in navigator.mediaDevices) {
   console.log("Let's get this party started");
-alert("ok");
+
 }
 else{
-alert("not support");
+document.getElementById("load").style.display="none";
+document.getElementById("login").style.display="inline-block";
 
 }
 }
-
-
- 
 
     </script>
 
